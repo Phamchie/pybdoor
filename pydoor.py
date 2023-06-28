@@ -191,7 +191,7 @@ while True:
 
 		while True:
 
-		      sys.stdout.write("\n meterpreter > ")
+		      sys.stdout.write("\nmeterpreter > ")
 		      command = sys.stdin.readline()
 
 		      if command == 'exit\n':
@@ -203,6 +203,4 @@ while True:
 		      elif command != '\n':
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
-		          print("")
-		          print("\n", output, "\n")
-		          print("")
+		          print("\n", output)
