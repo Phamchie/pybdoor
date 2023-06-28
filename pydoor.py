@@ -209,7 +209,7 @@ while True:
 		          print("\n", output, "\n")
 
 
-	elif text_main == "exploit":
+	elif text_main == "run":
 
 		import socket
 		import sys
