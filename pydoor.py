@@ -191,7 +191,7 @@ while True:
 
 		while True:
 
-		      sys.stdout.write("meterpreter > ")
+		      sys.stdout.write("\n meterpreter > ")
 		      command = sys.stdin.readline()
 
 		      if command == 'exit\n':
