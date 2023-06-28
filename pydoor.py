@@ -48,6 +48,7 @@ while session:
 | set lport               set port system attack
 |
 | set rhost               set ip victim
+| set rport               set port victim
 |
 | options                 show options
 ============================================
