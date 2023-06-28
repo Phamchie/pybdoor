@@ -23,13 +23,13 @@ print("")
 print("type help")
 print("")
 
-lhost = 'null'
-lport = 'null'
+lhost = 'null bytes'
+lport = 'null bytes'
 
 rhost = 'null'
 rport = 'null'
 
-filename = 'null'
+filename = 'null bytes '
 
 session = True
 while session:
@@ -204,5 +204,5 @@ while True:
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
 		          print("")
-		          print(output)
+		          print("\n", output, "\n")
 		          print("")
