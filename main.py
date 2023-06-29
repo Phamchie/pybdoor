@@ -2,11 +2,17 @@ import socket
 import time
 import sys
 import os 
+import colorama
+from termcolor import colored
+from colorama import Fore
+from colorama import Style
+
+colorama.init()
 
 print("")
 os.system('cls' if os.name == 'nt' else 'clear')
 def banner():
-	print('''            
+	print(Fore.RED + Style.BRIGHT + '''            
  (                                    
  )\ )        (    (                   
 (()/( (    ( )\   )\ )           (    
@@ -16,8 +22,8 @@ def banner():
 |  _/| || || _ \/ _` |/ _ \/ _ \| '_| 
 |_|   \_, ||___/\__,_|\___/\___/|_|   
       |__/                             
-      PyBdoor Framework''')
-	print("")
+      PyBdoor Framework''' + Style.RESET_ALL)
+	print(Fore.GREEN)
 	print("Copyright : ph4mch13n")
 	print("Twitter : @Anonym0us_VNPC")
 	print("Tele : https://t.me/Anon0psNews")
@@ -55,6 +61,7 @@ filename = 'null'
 
 session = True
 while session:
+	print(Style.RESET_ALL)
 	text_main = input("pybdoor(backdoor) > ")
 
 	if text_main == "help":
@@ -82,28 +89,28 @@ while session:
 		print("")
 		lhost = input("LHOST : ")
 		print("")
-		print(f"[*] set LHOST : {lhost}")
+		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set LHOST : {lhost}")
 		print("")
 
 	elif text_main == "set lport":
 		print("")
 		lport = input("LPORT : ")
 		print("")
-		print(f"[*] set LPORT : {lport}")
+		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set LPORT : {lport}")
 		print("")
 
 	elif text_main == "set rhost":
 		print("")
 		rhost = input("RHOST : ")
 		print("")
-		print(f"[*] set RHOST : {rhost}")
+		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set RHOST : {rhost}")
 		print("")
 
 	elif text_main == "set rport":
 		print("")
 		rport = input("RPORT : ")
 		print("")
-		print(f"[*] set RPORT : {rport}")
+		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set RPORT : {rport}")
 		print("")
 
 
@@ -161,7 +168,7 @@ while True:
 		with open(f'{filename}.py', 'w') as file:
 			file.write(code)
 
-		print(f"[*] set filename {filename}.py")
+		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set filename {filename}.py")
 
 		print("")
 
@@ -201,17 +208,17 @@ while True:
 
 
 		print("")
-		print(f'[+] Starting Reverse Handler On {rhost}:{rport}')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Starting Reverse Handler On {rhost}:{rport}')
 		time.sleep(2)
-		print('[*] Startingthe payload backdoor...')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Startingthe payload backdoor...')
 		time.sleep(1)
-		print('[*] Server is listening on '+ str(rhost) + ":" + str(rport) + '...')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Server is listening on '+ str(rhost) + ":" + str(rport) + '...')
 		conn, addr = s.accept()
-		print('[+] Connected Done From ', addr)
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Connected Done From ', addr)
 		time.sleep(2)
-		print("[+] Join Us : https://t.me/Anon0psNews/")
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Join Us : https://t.me/Anon0psNews/')
 		time.sleep(1)
-		print("[+] session started...")
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' session started...')
 
 		session_door = True
 
