@@ -1,6 +1,6 @@
-# PyBdoor/ backdoor python
-# twitter : @Anonym0us_VNPC
-# Telegram : @Anon0psNews
+# Hello
+# i Am VPNC
+
 import socket
 import time
 import sys
@@ -202,7 +202,7 @@ while True:
 
 		while True:
 
-		      sys.stdout.write(f"\n{addr} > ")
+		      sys.stdout.write(Fore.BLUE + f"\nmeterpreter > " + Style.RESET_ALL)
 		      command = sys.stdin.readline()
 
 		      if command == 'exit\n':
@@ -257,7 +257,7 @@ while True:
 
 		while True:
 
-		      sys.stdout.write(f"\n{addr} > ")
+		      sys.stdout.write(Fore.BLUE + f"\nmeterpreter > " + Style.RESET_ALL)
 		      command = sys.stdin.readline()
 
 		      if command == 'exit\n':
