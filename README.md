@@ -15,7 +15,8 @@ The usage of pybdoor must comply with relevant regulations and laws, ensuring th
 # install 
 1. git clone https://github.com/Phamchie/pybdoor
 2. cd pybdoor
-3. python main.py
+3. pip install -r setup.txt
+4. python main.py
 
 # How to use
 1. type help for helping for tool
